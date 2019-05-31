@@ -9,23 +9,48 @@ const Header = ({ siteTitle }) => {
     return `
       background: ${header.background || "none"};
       color: ${header.color || "inherit"};
-      padding: ${space.sm};
+      display: grid;
+      font-family: ${header.titleFontFamily};
+      grid-gap: ${space.lg};
+      grid-template-columns: repeat(2, auto);
+      justify-content: start;
+    `
+  })
+  const Title = styled.h1(({ theme }) => {
+    const { font } = theme
+    return `
+      font-size: ${font.size.xl};
     `
   })
 
-  const StyledLink = styled(Link)`
-    color: inherit;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
+  const NavLink = styled.div`
+    display: grid;
   `
+
+  const StyledLink = styled(Link)(({ theme }) => {
+    const { space } = theme
+    return `
+      color: inherit;
+      cursor: pointer;
+      display: grid;
+      align-content: center;
+      padding: ${space.sm};
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    `
+  })
+
   return (
     <StyledHeader>
-      <h1>
+      <Title>
         <StyledLink to="/">{siteTitle}</StyledLink>
-      </h1>
+      </Title>
+      <NavLink>
+        <StyledLink to="/articles/">Articles</StyledLink>
+      </NavLink>
     </StyledHeader>
   )
 }
