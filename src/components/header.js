@@ -16,16 +16,15 @@ const Header = ({ siteTitle }) => {
       justify-content: start;
     `
   })
-  const Title = styled.h1(({ theme }) => {
+  const NavLink = styled.div`
+    display: grid;
+  `
+  const Title = styled(NavLink)(({ theme }) => {
     const { font } = theme
     return `
       font-size: ${font.size.xl};
     `
   })
-
-  const NavLink = styled.div`
-    display: grid;
-  `
 
   const StyledLink = styled(Link)(({ theme }) => {
     const { space } = theme
