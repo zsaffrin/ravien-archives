@@ -21,6 +21,9 @@ exports.createPages = ({ graphql, actions }) => {
       allMarkdownRemark {
         edges {
           node {
+            frontmatter {
+              category
+            }
             fields {
               slug
             }
@@ -29,14 +32,31 @@ exports.createPages = ({ graphql, actions }) => {
       }
     }
   `).then(result => {
+    const categories = []
+
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+      const { slug } = node.fields
+      const { category } = node.frontmatter
+
       createPage({
-        path: node.fields.slug,
+        path: slug,
         component: path.resolve(`./src/templates/article.js`),
         context: {
-          slug: node.fields.slug,
+          slug: slug,
         },
       })
+
+      if (!categories.includes(category)) {
+        createPage({
+          path: `/articles/${category}`,
+          component: path.resolve(`./src/templates/category.js`),
+          context: {
+            category: category,
+          },
+        })
+
+        categories.push(category)
+      }
     })
   })
 }
