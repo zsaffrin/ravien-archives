@@ -1,5 +1,5 @@
 const base = (defaultFontSize = 14) => ({
-  font: {
+  text: {
     size: {
       xs: `${defaultFontSize * 0.65}px`,
       sm: `${defaultFontSize * 0.8}px`,

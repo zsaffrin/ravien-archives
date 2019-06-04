@@ -3,11 +3,11 @@ import styled from "styled-components"
 
 const Footer = () => {
   const StyledFooter = styled.footer(({ theme }) => {
-    const { font, footer, space } = theme
+    const { text, footer, space } = theme
     return `
       background: ${footer.background || "none"};
       color: ${footer.color || "inherit"};
-      font-size: ${font.size.md || "inherit"};
+      font-size: ${text.size.md || "inherit"};
       padding: ${space.md};
     `
   })

@@ -10,7 +10,6 @@ const Header = ({ siteTitle }) => {
       background: ${header.background || "none"};
       color: ${header.color || "inherit"};
       display: grid;
-      font-family: ${header.titleFontFamily};
       grid-gap: ${space.lg};
       grid-template-columns: repeat(2, auto);
       justify-content: start;
@@ -20,9 +19,11 @@ const Header = ({ siteTitle }) => {
     display: grid;
   `
   const Title = styled(NavLink)(({ theme }) => {
-    const { font } = theme
+    const { header, text } = theme
     return `
-      font-size: ${font.size.xl};
+      font-size: ${text.size.xl};
+      font-family: ${header.titleFont};
+      font-weight: ${header.titleWeight};
     `
   })
 

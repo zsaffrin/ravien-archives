@@ -10,10 +10,17 @@ import Footer from "./footer"
 import "./layout.css"
 
 const Layout = ({ children }) => {
-  const StyledLayout = styled.div`
+  const StyledLayout = styled.div(({ theme }) => {
+    const { font } = theme
+    return `
+      font-family: ${font.body.family};
+      font-weight: ${font.body.weight.normal};
+    `
+  })
+  const MainContentArea = styled.div`
     display: grid;
-    grid-template-rows: auto 1fr auto;
-    min-height: calc(100vh + 3.5em);
+    grid-template-rows: auto 1fr;
+    min-height: 98vh;
   `
 
   return (
@@ -30,8 +37,10 @@ const Layout = ({ children }) => {
       render={data => (
         <ThemeProvider theme={rave}>
           <StyledLayout>
-            <Header siteTitle={data.site.siteMetadata.title} />
-            <Content>{children}</Content>
+            <MainContentArea>
+              <Header siteTitle={data.site.siteMetadata.title} />
+              <Content>{children}</Content>
+            </MainContentArea>
             <Footer />
           </StyledLayout>
         </ThemeProvider>
