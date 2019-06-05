@@ -14,15 +14,18 @@ export default ({ data }) => {
     grid-template-rows: auto 6em 1fr;
     align-items: center;
   `
+  const Breadcrumb = styled.div`
+    text-transform: uppercase;
+  `
 
   return (
     <Layout>
       <Wrap>
-        <div>
+        <Breadcrumb>
           <Link to={`/articles/${frontmatter.category}`}>
             {frontmatter.category}
           </Link>
-        </div>
+        </Breadcrumb>
         <div>
           <h1>{frontmatter.title}</h1>
         </div>
