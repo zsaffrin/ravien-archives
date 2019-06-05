@@ -28,9 +28,9 @@ const Header = ({ siteTitle }) => {
   })
 
   const StyledLink = styled(Link)(({ theme }) => {
-    const { space } = theme
+    const { header, space } = theme
     return `
-      color: inherit;
+      color: ${header.color} !important;
       cursor: pointer;
       display: grid;
       align-content: center;

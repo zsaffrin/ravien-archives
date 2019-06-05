@@ -11,10 +11,19 @@ import "./layout.css"
 
 const Layout = ({ children }) => {
   const StyledLayout = styled.div(({ theme }) => {
-    const { font } = theme
+    const { content, font } = theme
     return `
       font-family: ${font.body.family};
       font-weight: ${font.body.weight.normal};
+
+      & a {
+        color: ${content.linkColor};
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     `
   })
   const MainContentArea = styled.div`
