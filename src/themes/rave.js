@@ -33,6 +33,7 @@ const rave = {
   },
   content: {
     background: color.white,
+    linkColor: "#86148c",
   },
   font,
   footer: {
