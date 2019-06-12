@@ -16,9 +16,11 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
-  return graphql(`
+  const markdown = graphql(`
     {
-      allMarkdownRemark {
+      allMarkdownRemark(
+        filter: { frontmatter: { category: { in: ["people", "places"] } } }
+      ) {
         edges {
           node {
             frontmatter {
@@ -48,7 +50,7 @@ exports.createPages = ({ graphql, actions }) => {
 
       if (!categories.includes(category)) {
         createPage({
-          path: `/articles/${category}`,
+          path: `/${category}`,
           component: path.resolve(`./src/templates/category.js`),
           context: {
             category: category,
@@ -59,4 +61,35 @@ exports.createPages = ({ graphql, actions }) => {
       }
     })
   })
+
+  const pcs = graphql(`
+    {
+      pcs: allFile(filter: { sourceInstanceName: { eq: "pcs" } }) {
+        edges {
+          node {
+            id
+            childPlayerCharactersJson {
+              name
+              slug
+            }
+          }
+        }
+      }
+    }
+  `).then(result => {
+    result.data.pcs.edges.forEach(({ node }) => {
+      const { name, slug } = node.childPlayerCharactersJson
+
+      createPage({
+        path: `/pc/${slug}`,
+        component: path.resolve(`./src/templates/pc.js`),
+        context: {
+          id: node.id,
+          name,
+        },
+      })
+    })
+  })
+
+  return Promise.all([markdown, pcs])
 }

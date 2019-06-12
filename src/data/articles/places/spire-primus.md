@@ -13,8 +13,8 @@ The lower spire: Dignitaries, ruling party politicians, higher ranking law enfor
 
 ## Subdivisions
 
-[The Rave](/articles/places/the-rave) - The most populated public zone in the spire. Epicenter of industry, trading, research, and politics mix together in a volatile environment, where wealth meets poverty, and security contests with survival. The largest interconnected area of free travel in the spire.
+[The Rave](/places/the-rave) - The most populated public zone in the spire. Epicenter of industry, trading, research, and politics mix together in a volatile environment, where wealth meets poverty, and security contests with survival. The largest interconnected area of free travel in the spire.
 
-[The Underhive](/articles/places/the-underhive) - A ruinous region of old-city. Structurally unsound, perilous area entered only to harvest resources.
+[The Underhive](/places/the-underhive) - A ruinous region of old-city. Structurally unsound, perilous area entered only to harvest resources.
 
-[The Sump](/articles/places/the-sump) - A toxic area of chemicals and decay at the bottom of the undercity, polluted by millenia of seeping waste from the spire above.
+[The Sump](/places/the-sump) - A toxic area of chemicals and decay at the bottom of the undercity, polluted by millenia of seeping waste from the spire above.

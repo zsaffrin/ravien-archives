@@ -31,11 +31,26 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/data`,
-        name: "markdown-pages",
+        path: `${__dirname}/src/data/articles`,
+        name: `articles`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/data/playerCharacters`,
+        name: `pcs`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/data/playerCharacterDetail`,
+        name: `pcdetail`,
       },
     },
     `gatsby-transformer-remark`,
+    `gatsby-transformer-json`,
     `gatsby-plugin-catch-links`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

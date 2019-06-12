@@ -5,7 +5,7 @@ import styled from "styled-components"
 import Layout from "../components/layout"
 
 export default ({ data }) => {
-  const { frontmatter, html } = data.markdownRemark
+  const { name } = data.file.childPlayerCharactersJson
 
   const Wrap = styled.div`
     margin: 1em auto;
@@ -22,24 +22,22 @@ export default ({ data }) => {
     <Layout>
       <Wrap>
         <Breadcrumb>
-          <Link to={`/${frontmatter.category}`}>{frontmatter.category}</Link>
+          <Link to={`/pcs`}>PCs</Link>
         </Breadcrumb>
         <div>
-          <h1>{frontmatter.title}</h1>
+          <h1>{name}</h1>
         </div>
-        <div dangerouslySetInnerHTML={{ __html: html }} />
       </Wrap>
     </Layout>
   )
 }
 
 export const query = graphql`
-  query($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        category
-        title
+  query($id: String!) {
+    file(id: { eq: $id }) {
+      childPlayerCharactersJson {
+        name
+        slug
       }
     }
   }

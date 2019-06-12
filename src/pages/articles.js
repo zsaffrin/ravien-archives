@@ -66,7 +66,9 @@ const ArticlesPage = ({ data }) => {
 
 export const query = graphql`
   query {
-    articles: allMarkdownRemark {
+    articles: allMarkdownRemark(
+      filter: { frontmatter: { category: { in: ["people", "places"] } } }
+    ) {
       nodes {
         fields {
           slug
