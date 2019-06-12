@@ -86,6 +86,7 @@ exports.createPages = ({ graphql, actions }) => {
         context: {
           id: node.id,
           name,
+          slug,
         },
       })
     })
