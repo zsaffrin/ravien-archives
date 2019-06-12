@@ -11,7 +11,7 @@ const Header = ({ siteTitle }) => {
       color: ${header.color || "inherit"};
       display: grid;
       grid-gap: ${space.lg};
-      grid-template-columns: repeat(2, auto);
+      grid-template-columns: repeat(3, auto);
       justify-content: start;
     `
   })
@@ -50,6 +50,9 @@ const Header = ({ siteTitle }) => {
       </Title>
       <NavLink>
         <StyledLink to="/articles/">Articles</StyledLink>
+      </NavLink>
+      <NavLink>
+        <StyledLink to="/pcs/">PCs</StyledLink>
       </NavLink>
     </StyledHeader>
   )

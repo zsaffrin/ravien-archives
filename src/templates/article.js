@@ -22,9 +22,7 @@ export default ({ data }) => {
     <Layout>
       <Wrap>
         <Breadcrumb>
-          <Link to={`/articles/${frontmatter.category}`}>
-            {frontmatter.category}
-          </Link>
+          <Link to={`/${frontmatter.category}`}>{frontmatter.category}</Link>
         </Breadcrumb>
         <div>
           <h1>{frontmatter.title}</h1>
