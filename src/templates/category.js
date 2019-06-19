@@ -11,7 +11,7 @@ const Category = ({ data, pageContext }) => {
     return `
       display: grid;
       grid-gap: ${space.xl};
-      padding: ${space.xl};
+      grid-template-rows: auto auto 1fr;
     `
   })
   const PageTitle = styled.h1`

@@ -5,23 +5,29 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const IndexPage = () => {
-  const Struck = styled.li`
-    text-decoration: line-through;
+  const MainContent = styled.div`
+    background: center / cover no-repeat
+      url("https://images.unsplash.com/photo-1556610626-9976884aae5b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80");
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-rows: 1fr 1fr;
   `
+  const HeroTitle = styled.h1`
+    color: #cab3ab;
+    font-size: 4em;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    word-spacing: 0.25em;
+    text-align: center;
+  `
+
   return (
     <Layout>
       <SEO title="Home" />
-      Stuff to make
-      <ul>
-        <Struck>Player Characters</Struck>
-        <Struck>Locations</Struck>
-        <li>Lore / background</li>
-        <Struck>People / groups</Struck>
-        <li>Missions / quests</li>
-        <li>Session log</li>
-        <li>Loot claimer</li>
-        <li>Map</li>
-      </ul>
+      <MainContent>
+        <HeroTitle>The Ravien Archives</HeroTitle>
+      </MainContent>
     </Layout>
   )
 }

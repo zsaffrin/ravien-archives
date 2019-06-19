@@ -7,20 +7,24 @@ import Layout from "../components/layout"
 export default ({ data }) => {
   const { frontmatter, html } = data.markdownRemark
 
-  const Wrap = styled.div`
-    margin: 1em auto;
-    max-width: 48em;
-    display: grid;
-    grid-template-rows: auto 6em 1fr;
-    align-items: center;
-  `
+  const PageLayout = styled.div(({ theme }) => {
+    const { space } = theme
+    return `
+      display: grid;
+      grid-template-columns: minmax(auto, 44em);
+      grid-template-rows: auto auto 1fr;
+      grid-gap: ${space.xl};
+      justify-content: center;
+      padding: ${space.xl};
+    `
+  })
   const Breadcrumb = styled.div`
     text-transform: uppercase;
   `
 
   return (
     <Layout>
-      <Wrap>
+      <PageLayout>
         <Breadcrumb>
           <Link to={`/${frontmatter.category}`}>{frontmatter.category}</Link>
         </Breadcrumb>
@@ -28,7 +32,7 @@ export default ({ data }) => {
           <h1>{frontmatter.title}</h1>
         </div>
         <div dangerouslySetInnerHTML={{ __html: html }} />
-      </Wrap>
+      </PageLayout>
     </Layout>
   )
 }

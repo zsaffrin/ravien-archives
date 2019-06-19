@@ -23,6 +23,9 @@ const ArticlesPage = ({ data }) => {
     return `
       display: grid;
       grid-gap: ${space.xl};
+      grid-auto-rows: min-content;
+      grid-template-columns: minmax(auto, 44em);
+      justify-content: center;
       padding: ${space.xl};
     `
   })
@@ -37,6 +40,10 @@ const ArticlesPage = ({ data }) => {
     margin: 0;
     text-transform: capitalize;
   `
+  const List = styled.ul`
+    list-style: none;
+    margin: 0;
+  `
 
   return (
     <Layout>
@@ -46,17 +53,17 @@ const ArticlesPage = ({ data }) => {
         {Object.keys(articles).map(key => (
           <Section key={key}>
             <CategoryHeader>{key}</CategoryHeader>
-            <div>
+            <List>
               {articles[key].map(article => {
                 const { slug } = article.fields
                 const { title } = article.frontmatter
                 return (
-                  <div key={title}>
+                  <li key={title}>
                     <Link to={slug}>{title}</Link>
-                  </div>
+                  </li>
                 )
               })}
-            </div>
+            </List>
           </Section>
         ))}
       </PageLayout>

@@ -1,4 +1,4 @@
-import { Link } from "gatsby"
+import { Link, StaticQuery, graphql } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
@@ -42,6 +42,33 @@ const Header = ({ siteTitle }) => {
       }
     `
   })
+
+  return (
+    <StaticQuery
+      query={graphql`
+        query SiteTitleQuery {
+          site {
+            siteMetadata {
+              title
+            }
+          }
+        }
+      `}
+      render={data => (
+        <StyledHeader>
+          <Title>
+            <StyledLink to="/">{data.site.siteMetadata.title}</StyledLink>
+          </Title>
+          <NavLink>
+            <StyledLink to="/articles/">Articles</StyledLink>
+          </NavLink>
+          <NavLink>
+            <StyledLink to="/pcs/">PCs</StyledLink>
+          </NavLink>
+        </StyledHeader>
+      )}
+    />
+  )
 
   return (
     <StyledHeader>

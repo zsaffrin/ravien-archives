@@ -1,11 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { StaticQuery, graphql } from "gatsby"
 import styled, { ThemeProvider } from "styled-components"
 
 import { rave } from "../themes"
-import Header from "./header"
-import Content from "./content"
+import Header from "../components/header"
 import Footer from "./footer"
 import "./layout.css"
 
@@ -26,35 +24,25 @@ const Layout = ({ children }) => {
       }
     `
   })
-  const MainContentArea = styled.div`
+  const MainContent = styled.div`
     display: grid;
     grid-template-rows: auto 1fr;
     min-height: 98vh;
   `
+  const Content = styled.div`
+    display: grid;
+  `
 
   return (
-    <StaticQuery
-      query={graphql`
-        query SiteTitleQuery {
-          site {
-            siteMetadata {
-              title
-            }
-          }
-        }
-      `}
-      render={data => (
-        <ThemeProvider theme={rave}>
-          <StyledLayout>
-            <MainContentArea>
-              <Header siteTitle={data.site.siteMetadata.title} />
-              <Content>{children}</Content>
-            </MainContentArea>
-            <Footer />
-          </StyledLayout>
-        </ThemeProvider>
-      )}
-    />
+    <ThemeProvider theme={rave}>
+      <StyledLayout>
+        <MainContent>
+          <Header />
+          <Content>{children}</Content>
+        </MainContent>
+        <Footer />
+      </StyledLayout>
+    </ThemeProvider>
   )
 }
 

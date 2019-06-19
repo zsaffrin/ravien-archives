@@ -7,24 +7,27 @@ import Layout from "../components/layout"
 export default ({ data }) => {
   const { html } = data.pcDetail
 
-  const Wrap = styled.div(({ theme }) => {
+  const PageLayout = styled.div(({ theme }) => {
     const { space } = theme
     return `
-      margin: 1em auto;
-      max-width: 48em;
       display: grid;
-      grid-gap: ${space.lg};
+      grid-template-columns: minmax(auto, 44em);
+      grid-template-rows: auto 1fr;
+      grid-gap: ${space.xl};
+      justify-content: center;
+      padding: ${space.xl};
     `
   })
+  const Breadcrumb = styled.div``
 
   return (
     <Layout>
-      <Wrap>
-        <div>
+      <PageLayout>
+        <Breadcrumb>
           <Link to={`/pcs`}>PCs</Link>
-        </div>
+        </Breadcrumb>
         <div dangerouslySetInnerHTML={{ __html: html }} />
-      </Wrap>
+      </PageLayout>
     </Layout>
   )
 }

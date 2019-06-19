@@ -11,6 +11,9 @@ const pcsPage = ({ data }) => {
     return `
       display: grid;
       grid-gap: ${space.xl};
+      grid-auto-rows: min-content;
+      grid-template-columns: minmax(auto, 44em);
+      justify-content: center;
       padding: ${space.xl};
     `
   })
