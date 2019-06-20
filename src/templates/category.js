@@ -10,13 +10,20 @@ const Category = ({ data, pageContext }) => {
     const { space } = theme
     return `
       display: grid;
+      grid-template-columns: minmax(auto, 44em);
+      grid-template-rows: auto 1fr;
       grid-gap: ${space.xl};
-      grid-template-rows: auto auto 1fr;
+      justify-content: center;
+      padding: ${space.xl};
     `
   })
   const PageTitle = styled.h1`
     margin: 0;
     text-transform: capitalize;
+  `
+  const List = styled.ul`
+    list-style: none;
+    margin: 0;
   `
 
   return (
@@ -24,16 +31,16 @@ const Category = ({ data, pageContext }) => {
       <SEO title="Category" />
       <PageLayout>
         <PageTitle>{pageContext.category}</PageTitle>
-        <div>
+        <List>
           {data.articles.nodes.map(({ fields, frontmatter }) => {
             const { title } = frontmatter
             return (
-              <div key={title}>
+              <li key={title}>
                 <Link to={fields.slug}>{title}</Link>
-              </div>
+              </li>
             )
           })}
-        </div>
+        </List>
       </PageLayout>
     </Layout>
   )
